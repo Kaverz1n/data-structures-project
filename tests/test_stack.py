@@ -44,7 +44,12 @@ class TestStack(unittest.TestCase):
         stack.push("Данные_2")
         self.assertEqual(len(stack.stack), 2)
         self.assertEqual(stack.pop(), "Данные_2")
+        self.assertEqual(str(stack.top), "Данные: Данные" )
         self.assertEqual(len(stack.stack), 1)
+        self.assertEqual(stack.pop(), "Данные")
+        self.assertEqual(stack.top, None)
+        self.assertEqual(len(stack.stack), 0)
+
 
     def test_repr(self):
         stack = Stack()
