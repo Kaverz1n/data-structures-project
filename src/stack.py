@@ -41,6 +41,11 @@ class Stack():
 
         :return: данные удаленного элемента
         """
+
+        if len(self.stack) == 1:
+            self.top = None
+        else:
+            self.top = self.stack[-2]
         return self.stack.pop(-1).data
 
     def __repr__(self):
