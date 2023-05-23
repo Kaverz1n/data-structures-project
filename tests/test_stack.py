@@ -14,7 +14,7 @@ class TestNode(unittest.TestCase):
 
     def test_repr(self):
         data = Node("Данные", None)
-        self.assertEqual(str(data), "Данные: Данные")
+        self.assertEqual(str(data), "Node('Данные', None)")
 
 
 class TestStack(unittest.TestCase):
@@ -30,13 +30,13 @@ class TestStack(unittest.TestCase):
         self.assertEqual(stack.stack[-1].next_node, None)
         self.assertEqual(len(stack.stack), 1)
         self.assertIsInstance(stack.top, object)
-        self.assertEqual(str(stack.top), "Данные: Данные")
+        self.assertEqual(str(stack.top), "Node('Данные', None)")
         stack.push("Данные_2")
         self.assertEqual(len(stack.stack), 2)
         self.assertEqual(stack.stack[-1].data, "Данные_2")
         self.assertEqual(stack.stack[-1].next_node, stack.stack[0])
         self.assertIsInstance(stack.top, object)
-        self.assertEqual(str(stack.top), "Данные: Данные_2")
+        self.assertEqual(str(stack.top), "Node('Данные_2', Node('Данные', None))")
 
     def test_pop(self):
         stack = Stack()
@@ -44,7 +44,7 @@ class TestStack(unittest.TestCase):
         stack.push("Данные_2")
         self.assertEqual(len(stack.stack), 2)
         self.assertEqual(stack.pop(), "Данные_2")
-        self.assertEqual(str(stack.top), "Данные: Данные" )
+        self.assertEqual(str(stack.top), "Node('Данные', None)")
         self.assertEqual(len(stack.stack), 1)
         self.assertEqual(stack.pop(), "Данные")
         self.assertEqual(stack.top, None)
