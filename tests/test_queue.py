@@ -65,4 +65,5 @@ class TestQueue(unittest.TestCase):
         self.assertEqual(queue.head, None)
 
         queue.enqueue('Данные')
-        self.assertEqual(queue.dequeue().data, 'Данные')
+        self.assertEqual(queue.dequeue(), 'Данные')
+        self.assertEqual(queue.dequeue(), None)

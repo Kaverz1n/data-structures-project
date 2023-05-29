@@ -51,12 +51,14 @@ class Queue:
         """
         Метод для удаления элемента из очереди. Возвращает данные удаленного элемента
 
-        :return: данные удаленного элемента
+        :return: данные удаленного элемента или None
         """
         if len(self.queue) > 1:
             self.head = self.head.next_node
-        else:
+        elif len(self.queue) == 1:
             self.head = None
             self.tail = None
+        else:
+            return None
 
-        return self.queue.pop(0)
+        return self.queue.pop(0).data
