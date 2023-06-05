@@ -76,6 +76,27 @@ class TestLinkedList(unittest.TestCase):
         self.assertEqual(linked_list.linked_list[-1].next_node, None)
         self.assertEqual(repr(linked_list.linked_list[-2].next_node), "Node({'id': 4})")
 
+    def test_to_load(self):
+        linked_list = LinkedList()
+        linked_list.insert_beginning({'id': 1, 'username': 'Scammer'})
+        linked_list.insert_at_end({'id': 2, 'username': 'Test'})
+        self.assertEqual(
+            linked_list.to_list(),
+            [{'id': 1, 'username': 'Scammer'}, {'id': 2, 'username': 'Test'}]
+        )
+
+        data = linked_list.to_list()
+        self.assertEqual(
+            data,
+            [{'id': 1, 'username': 'Scammer'}, {'id': 2, 'username': 'Test'}]
+        )
+
+    def test_get_data_by_id(self):
+        linked_list = LinkedList()
+        linked_list.insert_beginning({'id': 1, 'username': 'Scammer'})
+        linked_list.insert_at_end({'id': 2, 'username': 'Test'})
+        self.assertEqual(linked_list.get_data_by_id(2), {'id': 2, 'username': 'Test'})
+
     def test_str(self):
         linked_list = LinkedList()
         self.assertEqual(str(linked_list), 'None')
